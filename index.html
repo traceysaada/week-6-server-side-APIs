@@ -1,69 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>world Weather Forcast</title>
 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
-       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    
-</head>
-<body>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+      integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu"
+      crossorigin="anonymous"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  </head>
+  <body>
     <div class="page-header">
-        <STRONG>
-           <h1> WORLD WEATHER FORCAST  </h1>        
-    </STRONG>
-    <h2><small>   SEARCH LOCAL WEATHER </small></h2>
-      </div>
-      
-  <input type="text" id="myInput" placeholder="Search for City..">
-  <table id="myTable">
-    
-        <button type="button" class="btn btn-default">
-     <span class="glyphicon glyphicon-search"></span> Search
-   </button>
-
-   <div class="container-fluid">
-     <br>
-     <div class = card>
-      <div class = "card-body">
-        <div id="" class="row1">
-          <div class=" col-1"></div>
-          <textarea id="" class="col-1 description"></textarea>
-      </div>
-      <div id="" class="row2">
-        <div class=" col-1"></div>
-        <textarea id="" class="col-1 description"></textarea>
+      <strong>
+        <h1>WORLD WEATHER FORCAST</h1>
+      </strong>
+      <h2><small> SEARCH LOCAL WEATHER </small></h2>
     </div>
-    <div id="" class="row3">
-      <div class=" col-1"></div>
-      <textarea id="" class="col-1 description"></textarea>
-  </div>
-  <div id="" class="row4">
-    <div class=" col-1"></div>
-    <textarea id="" class="col-1 description"></textarea>
-</div>
-<div id="" class="row5">
-  <div class=" col-1"></div>
-  <textarea id="" class="col-1 description"></textarea>
-</div>
-<div id="" class="row6">
-  <div class=" col-1"></div>
-  <textarea id="" class="col-1 description"></textarea>
-</div>
-<div id="" class="row7">
-  <div class=" col-1"></div>
-  <textarea id="" class="col-1 description"></textarea>
-</div>
-<div id="" class="row8">
-  <div class=" col-1"></div>
-  <textarea id="" class="col-1 description"></textarea>
-</div>
-  </div>   
-  
+    <div class="row">
+      <aside class="col-lg-2">
+        <input type="text" id="myInput" placeholder="Search for City.." />
 
-      <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-      <script src="script.js"></script>
-</body>
+        <button type="button" class="btn btn-default">
+          <span class="glyphicon glyphicon-search"></span> Search
+        </button>
+        <ul id="previousSearches" class="list-group"></ul>
+      </aside>
+
+      <div class="col-lg-10">
+
+        <div class="currentWeather"></div>
+        <div class="futureWeather"></div>
+      </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="script.js"></script>
+  </body>
 </html>
