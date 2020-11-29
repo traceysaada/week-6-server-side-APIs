@@ -9,6 +9,11 @@ i managed to get the cities to load on search. also to get local storage to work
 
 search works, city names load in local storage & list. the weather information is all showing in console so just need to get the five day & current day icons to load.
 
+only managed to get some data from weather on console log to show on browser. tried many ways but now the UV section for information is not working so cannot get this & the temperature wont load.
+
+
+
+
 Developers are often tasked with retrieving data from another application's API and using it in the context of their own. Third-party APIs allow developers to access their data and functionality by making requests with specific parameters to a URL. Your challenge is to build a weather dashboard that will run in the browser and feature dynamically updated HTML and CSS.
 
 Use the [OpenWeather API](https://openweathermap.org/api) to retrieve weather data for cities. The documentation includes a section called "How to start" that will provide basic setup and usage instructions. Use `localStorage` to store any persistent data.
