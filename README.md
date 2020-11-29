@@ -1,5 +1,14 @@
 # 06 Server-Side APIs: Weather Dashboard
 
+first set up html to organise initial button & search list.
+entered headers & how I wanted page to look.
+
+next was setting up API with open weather so I could then set up my js section.
+
+i managed to get the cities to load on search. also to get local storage to work but finding icon a lot more difficult to load as constantly pulling up errors
+
+search works, city names load in local storage & list. the weather information is all showing in console so just need to get the five day & current day icons to load.
+
 Developers are often tasked with retrieving data from another application's API and using it in the context of their own. Third-party APIs allow developers to access their data and functionality by making requests with specific parameters to a URL. Your challenge is to build a weather dashboard that will run in the browser and feature dynamically updated HTML and CSS.
 
 Use the [OpenWeather API](https://openweathermap.org/api) to retrieve weather data for cities. The documentation includes a section called "How to start" that will provide basic setup and usage instructions. Use `localStorage` to store any persistent data.

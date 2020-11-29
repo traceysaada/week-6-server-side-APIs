@@ -3,9 +3,10 @@ $(document).ready(function () {
   $(".btn").on("click", function () {
     var searchedCity = $("#myInput").val();
     console.log(searchedCity);
+    
     searchForCityWeather(searchedCity);
   });
-
+  
   function searchForCityWeather(city) {
     $.ajax({
       type: "GET",
@@ -18,10 +19,38 @@ $(document).ready(function () {
         localStorage.setItem("searches", JSON.stringify(previousSearches))
         presentPreviousSearchesFromLocaLStorage();
 
+//html for current weather
+var temperature = [];
 
-        
+var weatherSiteUrl = "http://cors-anywhere.herokuapp.com/https://www.metaweather.com/";
+var weatherAPIUrl  = weatherSiteUrl + "api/";
+var cityLocation = weatherAPIUrl + "location/search/?query=";
+var iconUrl = "https://www.metaweather.com/";
+
+
+function dataReturned () {
+
+$.getJSON(cityLocation + city, function(data) { 
+
+    $.getJSON(weatherAPIUrl + 'location/' + data[0].woeid, function(data) { 
+    $('.location').html(city + '<i class="fa fa-map-marker"></i>'); // Name of location
+    $('.weather-state').html(data.consolidated_weather[0].weather_state_name);  //Weather state
+        temperature[0] = Math.floor(data.consolidated_weather[0].the_temp);
+    $('.temperature').html(temperature[0] + '<sup>&deg;</sup><span class="unit">c</span>'); // Temperature
+        var weatherImg = iconUrl + 'static/img/weather/' + data.consolidated_weather[0].weather_state_abbr + '.svg';
+                $('.weather-icon').html('<img src=' + weatherImg + '>');
+
+    });
+});
+};
+
+//$(selector + 'temp').text(data.main.temp + "°");  
+ // $(selector + 'wind').text(data.wind.speed + "MPH");  
+ // $(selector + 'humidity').text(data.main.humidity + "%");  
+ // $(selector + 'pressure').text(data.main.pressure + "°");  
+    
         searchForecast(city);
-        searchForUV(dataReturned.coord.lat, dataReturned.coord.lon);
+        
       },
     });
   }
@@ -33,6 +62,11 @@ $(document).ready(function () {
       dataType: "json",
       success: function (dataReturned) {
         console.log("CityForecast", dataReturned);
+      
+        //html for the next 5 days weather
+       
+        
+        
       },
     });
   }
@@ -43,9 +77,17 @@ $(document).ready(function () {
       dataType: "json",
       success: function (dataReturned) {
         console.log("UVData", dataReturned);
+
+        //html for the uv index to be displayed
+
+
+
+        //searchForUV(dataReturned.coord.lat, dataReturned.coord.lon);
+
       },
     });
   }
+
   function presentPreviousSearchesFromLocaLStorage() {
     var previousSearches = JSON.parse(localStorage.getItem("searches")) || [];
     if (previousSearches.length > 0) {
@@ -53,7 +95,7 @@ $(document).ready(function () {
         var searched = $("<button>").addClass("searchedCity list-group-item").text(previousSearches[i]);
         $("#previousSearches").append(searched);
       }
-    }
+        }
   }
   presentPreviousSearchesFromLocaLStorage();
 });
