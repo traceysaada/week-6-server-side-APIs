@@ -58,8 +58,6 @@ $(document).ready(function () {
 
         //html for the uv index to be displayed
 
-
-
       searchForUV(dataReturned.coord.lat, dataReturned.coord.lon);
 
       },
