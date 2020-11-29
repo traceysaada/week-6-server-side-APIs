@@ -17,38 +17,17 @@ $(document).ready(function () {
         var previousSearches = JSON.parse(localStorage.getItem("searches")) || [];
         previousSearches.push(city);
         localStorage.setItem("searches", JSON.stringify(previousSearches))
+        $('#previousSearches').empty();
         presentPreviousSearchesFromLocaLStorage();
+        $('.currentWeather').empty();
+        var citySearchedFor = dataReturned.name;
+        console.log(citySearchedFor)
+        $(".currentWeather").append($("<h3>").text(citySearchedFor));
+        var windSpeed = dataReturned.wind.speed;
+        $(".currentWeather").append($("<h3>").text(windSpeed));
+       
 
-//html for current weather
-var temperature = [];
 
-var weatherSiteUrl = "http://cors-anywhere.herokuapp.com/https://www.metaweather.com/";
-var weatherAPIUrl  = weatherSiteUrl + "api/";
-var cityLocation = weatherAPIUrl + "location/search/?query=";
-var iconUrl = "https://www.metaweather.com/";
-
-
-function dataReturned () {
-
-$.getJSON(cityLocation + city, function(data) { 
-
-    $.getJSON(weatherAPIUrl + 'location/' + data[0].woeid, function(data) { 
-    $('.location').html(city + '<i class="fa fa-map-marker"></i>'); // Name of location
-    $('.weather-state').html(data.consolidated_weather[0].weather_state_name);  //Weather state
-        temperature[0] = Math.floor(data.consolidated_weather[0].the_temp);
-    $('.temperature').html(temperature[0] + '<sup>&deg;</sup><span class="unit">c</span>'); // Temperature
-        var weatherImg = iconUrl + 'static/img/weather/' + data.consolidated_weather[0].weather_state_abbr + '.svg';
-                $('.weather-icon').html('<img src=' + weatherImg + '>');
-
-    });
-});
-};
-
-//$(selector + 'temp').text(data.main.temp + "°");  
- // $(selector + 'wind').text(data.wind.speed + "MPH");  
- // $(selector + 'humidity').text(data.main.humidity + "%");  
- // $(selector + 'pressure').text(data.main.pressure + "°");  
-    
         searchForecast(city);
         
       },
@@ -64,13 +43,12 @@ $.getJSON(cityLocation + city, function(data) {
         console.log("CityForecast", dataReturned);
       
         //html for the next 5 days weather
-       
-        
+          
         
       },
     });
   }
-  function searchForUV(lat, lon) {
+  function searchUV(lat, lon) {
     $.ajax({
       type: "GET",
       url: `http://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}`,
@@ -82,7 +60,7 @@ $.getJSON(cityLocation + city, function(data) {
 
 
 
-        //searchForUV(dataReturned.coord.lat, dataReturned.coord.lon);
+      searchForUV(dataReturned.coord.lat, dataReturned.coord.lon);
 
       },
     });
